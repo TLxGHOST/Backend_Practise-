@@ -1,0 +1,13 @@
+form {
+    display: block;
+    margin-top: 0em;
+    unicode-bidi: isolate;
+}
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+    padding-top: 25vh;
+}
+.m-auto {
+    margin: auto !important;
+}

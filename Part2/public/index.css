@@ -1,0 +1,27 @@
+body{
+  display: flex;
+  background-color: rgba(55, 55, 55, 0.304);
+  justify-content: center;
+  
+
+}
+
+.centered{
+  background-color: rgba(55, 55, 55, 0.290) !important;
+  margin-top: 35vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 5px;
+  border-radius: 3px;
+  border-color: black;
+  row-gap: 12px;
+}
+
+.hidden{
+    display: none;
+}
+
+.show{
+  display: block;
+}
