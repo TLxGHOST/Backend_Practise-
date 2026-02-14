@@ -1,0 +1,78 @@
+/* Page background */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form container */
+form {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Logo spacing */
+form img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+/* Heading */
+h1 {
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input spacing */
+.form-floating {
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  transition: all 0.3s ease;
+}
+
+/* Focus effect */
+.form-control:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.2);
+}
+
+/* Checkbox alignment */
+.form-check {
+  text-align: left;
+  margin-top: 10px;
+}
+
+/* Button styling */
+.btn-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  background: #4e73df;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #375ac2;
+  transform: translateY(-1px);
+}
+
+/* Footer text */
+p {
+  font-size: 14px;
+  color: #777;
+}

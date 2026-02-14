@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Example</title>
+  <style>
+    /* ===== GLOBAL ===== */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #eef2f7, #d9e2ec);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      background: #111827;
+      color: white;
+      padding: 14px 30px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    nav h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ===== RESPONSE AREA ===== */
+    .response-area {
+      margin-bottom: 25px;
+      background: #f8fafc;
+      border-left: 4px solid #3b82f6;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: #1e293b;
+      font-size: 14px;
+      word-wrap: break-word;
+    }
+
+    /* ===== FORM ===== */
+    form {
+      margin-top: 15px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: 0.25s ease;
+      font-size: 14px;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: #3b82f6;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    /* ===== BUTTONS ===== */
+    input[type="submit"] {
+      margin-top: 12px;
+      margin-right: 8px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="submit"]:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ===== COLORS ===== */
+    #get {
+      background-color: #22c55e;
+    }
+
+    #get:hover {
+      background-color: #16a34a;
+    }
+
+    #post {
+      background-color: #3b82f6;
+    }
+
+    #post:hover {
+      background-color: #2563eb;
+    }
+
+    #put {
+      background-color: #a855f7;
+    }
+
+    #put:hover {
+      background-color: #9333ea;
+    }
+
+    #patch {
+      background-color: #f59e0b;
+    }
+
+    #patch:hover {
+      background-color: #d97706;
+    }
+
+    #delete {
+      background-color: #ef4444;
+    }
+
+    #delete:hover {
+      background-color: #dc2626;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h1>Hello <%= user %>
+    </h1>
+  </nav>
+  <div class="container">
+    <div class="response-area">
+      <p>
+        <%= content %>
+      </p>
+    </div>
+    <form id="myForm" method="post">
+      <label for="idInput">Id:</label>
+      <input type="text" id="idInput" name="id">
+
+      <label for="secretInput">Secret:</label>
+      <input type="text" id="secretInput" name="secret">
+
+      <label for="scoreInput">Score:</label>
+      <input type="number" id="scoreInput" name="score">
+
+      <label for="submit">Route:</label>
+      <input id="get" type="submit" value="GET" formaction="/get-secret">
+      <input id="post" type="submit" value="POST" formaction="/post-secret">
+      <input id="put" type="submit" value="PUT" formaction="/put-secret">
+      <input id="patch" type="submit" value="PATCH" formaction="/patch-secret">
+      <input id="delete" type="submit" value="DELETE" formaction="/delete-secret">
+    </form>
+  </div>
+</body>
+
+</html>
