@@ -15,7 +15,7 @@ const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com";
 
 let yourBearerToken = "";
-let user;
+let user="";
 
 // 🔥 dynamic config (correct)
 function getConfig() {
@@ -27,11 +27,12 @@ function getConfig() {
 }
 
 // global user for EJS
-// function setUsername(req, res, next)  {
-//   res.locals.user = user;
-//   next();
-// }
+function setUsername(req, res, next)  {
+  res.locals.user = user;
+  next();
+}
 
+app.use(setUsername);
 app.get("/", (req, res) => {
   res.render("login.ejs");
 });
@@ -41,7 +42,7 @@ app.get("/", (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   user = email;
-  res.locals.user = user; 
+ 
 
   try {
     // REGISTER (urlencoded required)
