@@ -17,7 +17,7 @@ const API_URL = "https://secrets-api.appbrewery.com";
 let yourBearerToken = "";
 let user="";
 
-// 🔥 dynamic config (correct)
+//  dynamic config (correct)
 function getConfig() {
   return {
     headers: {

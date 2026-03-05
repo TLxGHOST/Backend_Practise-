@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CocktailFlix</title>
+
+  <style>
+    /* ===== GLOBAL ===== */
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 96%;
+      padding: 15px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, #000, transparent);
+      z-index: 100;
+      border-right: 15vh;
+    }
+
+    .logo {
+      font-size: 30px;
+      color: #e50914;
+      font-weight: bold;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 75vh;
+      background:
+        linear-gradient(to top, #111 5%, transparent),
+        url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b") center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 40px;
+    }
+
+    .hero h2 {
+      font-size: 55px;
+      margin: 0;
+      text-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    /* ===== SECTION ===== */
+    .section {
+      padding: 10px 30px 30px;
+    }
+
+    .section h3 {
+      margin: 10px 0 15px;
+      font-size: 24px;
+    }
+
+    /* ===== ROW ===== */
+    .row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .row::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      min-width: 220px;
+      height: 320px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: all .35s ease;
+      cursor: pointer;
+      background: #222;
+      flex-shrink: 0;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* HOVER EXPAND */
+    .card:hover {
+      transform: scale(1.15);
+      z-index: 10;
+    }
+
+    /* OVERLAY */
+    .info {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to top, rgba(0, 0, 0, .95), transparent);
+    }
+
+    .info h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .info p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #ddd;
+    }
+
+    /* ===== FADE EDGES ===== */
+    .row-wrapper {
+      position: relative;
+    }
+
+    .row-wrapper::before,
+    .row-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .row-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #111, transparent);
+    }
+
+    .row-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #111, transparent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">🍸 CocktailFlix</div>
+    <form action="search" method="post">
+      <input type="text" name="name" id="name" placeholder="Cocktail">
+      <input type="submit" value="🔍">
+    </form>
+  </nav>
+
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Pour. Sip. Discover.</h2>
+  </section>
+
+  <!-- ===== TRENDING ===== -->
+  <section class="section">
+    <h3>Trending Cocktails</h3>
+
+    <div class="row-wrapper">
+      <div class="row">
+        <% trending?.forEach(drink=> { %>
+          <div class="card">
+            <img src="<%= drink.strDrinkThumb %>">
+            <div class="info">
+              <h4>
+                <%= drink.strDrink %>
+              </h4>
+              <p>
+                <%= drink.strAlcoholic || "Cocktail" %>
+              </p>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALCOHOLIC ===== -->
+  <section class="section">
+    <h3>Alcoholic</h3>
+
+    <div class="row-wrapper">
+      <div class="row">
+        <% alcoholic?.forEach(drink=> { %>
+          <div class="card">
+            <img src="<%= drink.strDrinkThumb %>">
+            <div class="info">
+              <h4>
+                <%= drink.strDrink %>
+              </h4>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NON ALCOHOLIC ===== -->
+  <section class="section">
+    <h3>Non Alcoholic</h3>
+
+    <div class="row-wrapper">
+      <div class="row">
+        <% nonAlcoholic?.forEach(drink=> { %>
+          <div class="card">
+            <img src="<%= drink.strDrinkThumb %>">
+            <div class="info">
+              <h4>
+                <%= drink.strDrink %>
+              </h4>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RANDOM ===== -->
+  <section class="section">
+    <h3>Random Picks</h3>
+
+    <div class="row-wrapper">
+      <div class="row">
+        <% random?.forEach(drink=> { %>
+          <div class="card">
+            <img src="<%= drink.strDrinkThumb %>">
+            <div class="info">
+              <h4>
+                <%= drink.strDrink %>
+              </h4>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
