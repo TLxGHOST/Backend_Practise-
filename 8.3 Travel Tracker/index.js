@@ -21,15 +21,17 @@ await db.connect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-db.query("Select * from visited_countries",(err,res)=>{
-  if(err)
-    console.log("database error",err.message);
-    else{
-    data=res.rows;}
-})
+// db.query("Select * from visited_countries",(err,res)=>{
+//   if(err)
+//     console.log("database error",err.message);
+//     else{
+//     data=res.rows;}
+// })
 let country=[];
 
- function datafilling(){
+ async function datafilling(){
+  const res= await db.query("Select * from visited_countries")
+  data=res.rows;
   country.splice(0, country.length);
   data.forEach(element => {
       country.push(element.country_code);
@@ -45,8 +47,16 @@ app.get("/", async (req, res) => {
   })
 });
 
-app.post("/add",(req,res)=>{
-    db.query(`INSERT INTO visited_countries(country_code) VALUES(${req.body.country})`)
+app.post("/add",async(req,res)=>{
+    console.log(req.body.country.toLowerCase());
+
+    let newCode=await db.query(`SELECT country_code FROM countries WHERE country_name = $1`,[req.body.country]);
+      if(newCode.rows.length===0){
+        return res.redirect("/");
+      }
+    // console.log(newCode.rows[0].country_code);
+    await db.query(`INSERT INTO visited_countries(country_code) VALUES ($1) ON CONFLICT DO NOTHING`,[newCode.rows[0].country_code]);
+    res.redirect('/');
 })
 
 
