@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>This is setinterval and set Time out practise</h1>
+  <button id="start">start</button>
+  <button id="stop">stop</button>
+</body>
+<script>
+  hex = '0123456789ABCDEF';
+
+  function randomColor() {
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      let random = Math.floor(Math.random() * 16)
+      color += hex[random];
+    }
+    return color;
+  }
+  let runId = null;
+  function runColorChange() {
+
+    if (runId !== null) return
+    runId = setInterval(() => {
+      document.body.style.backgroundColor = randomColor()
+      let color = randomColor();
+
+    }, 5000);
+  }
+  document.querySelector("#start").addEventListener('click',
+    runColorChange)
+  document.querySelector("#stop").addEventListener('click', function () {
+    clearInterval(runId);
+    runId = null;
+  })
+</script>
+<script src="./test.js">
+</script>
+
+</html>

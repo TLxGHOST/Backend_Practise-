@@ -1,0 +1,31 @@
+body{
+  margin:0px
+}
+.Header{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 25px; 
+  background-color: rgb(126, 210, 210);
+  padding-right: 50px;
+  margin: 0;
+  border-radius: 0px;
+}
+
+.MainPage{
+  display: flex;
+  flex-direction: column;   /* ← vertical flow */
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+  gap: 20px;
+ row-gap: 25px;
+  margin: 10rem 20rem;
+  padding: 5rem 2rem;
+
+  background-color: rgb(215, 246, 130);
+}
+form{
+  row-gap: 21px;
+
+}
