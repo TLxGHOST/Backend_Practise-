@@ -1,0 +1,42 @@
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+.m-auto {
+    margin: auto !important;
+}
+.w-100 {
+    width: 100% !important;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+main {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+.align-items-center {
+    align-items: center !important;
+}
+.d-flex {
+    display: flex !important;
+}
+html, body {
+    height: 100%;
+}
+
+#logo{
+  margin: 0px;
+}
