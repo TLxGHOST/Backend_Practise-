@@ -1,36 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
+import Heading from "./Heading";
 
 function App() {
-  const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([]);
+  const [text, setText] = useState("");
 
-  function handleChange(event) {
-    const newValue = event.target.value;
-    setInputText(newValue);
+  function trackText(e) {
+    const value = e.target.value;
+    setText(value);
   }
-
-  function addItem() {
-    setItems(prevItems => {
-      return [...prevItems, inputText];
-    });
-    setInputText("");
+  function handleAdd() {
+    if (!text.trim()) return;
+    setItems((prev) => [text, ...prev]);
+    setText("");
+    // console.log(items);
   }
-
   return (
     <div className="container">
       <div className="heading">
-        <h1>To-Do List</h1>
+        <Heading title="To-Do List" />
       </div>
+
       <div className="form">
-        <input onChange={handleChange} type="text" value={inputText} />
-        <button onClick={addItem}>
+        <input name="input" type="text" onChange={trackText} value={text} />
+        <button type="submit" onClick={handleAdd}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          {items.map(todoItem => (
-            <li>{todoItem}</li>
+          {items.map((item, index) => (
+            <li key={index}> {item} </li>
           ))}
         </ul>
       </div>
